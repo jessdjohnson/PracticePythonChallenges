@@ -41,7 +41,6 @@ def getAge(name):
     if (birth_month < this_month) or ((birth_month == this_month) and (birth_day < this_day)):
         #already had their birthday
         age = this_year - birth_year  
-        print(age)
     elif ((birth_month == this_month) and (birth_day > this_day)):
         #birthday is this month, but still coming up
         age = this_year - birth_year - 1
@@ -56,7 +55,6 @@ def getAge(name):
     else: 
         #birthday is not this month, but later in the year.
         age = this_year - birth_year - 1
-        print(age)
 
     return birth_year, age
     
