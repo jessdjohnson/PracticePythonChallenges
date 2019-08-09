@@ -9,7 +9,6 @@ Goal: Ask the user for a number and determine whether the number is prime or not
 Jess Johnson, 08/09/2019
 """
 
-
 def getNum():
     print("Please input an integer number you'd like to test the primality of.")
     num = int(input())
