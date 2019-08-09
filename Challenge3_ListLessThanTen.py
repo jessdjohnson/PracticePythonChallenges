@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Challenge 3: Character Input
+Challenge 3: List Less Than Ten
 For prompt, visit: https://www.practicepython.org/exercise/2014/02/15/03-list-less-than-ten.html\
 
 Goal: Create a program that has a list and prints out all the elements of the list that are less than 5.
@@ -9,6 +9,7 @@ Extras: Ask the user for a number and returns a list with only elements smaller 
 
 Jess Johnson, 08/09/2019
 """
+
 def getNum():
     print('Please input an integer number for testing or press return for the default value of 5:')
     num = input()
