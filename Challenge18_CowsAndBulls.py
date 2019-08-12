@@ -8,7 +8,6 @@ Goal: Create program to play "cows and bulls".
 Jess Johnson, 08/12/2019
 """
 import random
-import collections
 
 def getCowsAndBulls(rand_num, user_guess):
     str_rand = str(rand_num).zfill(4)
@@ -34,7 +33,6 @@ def getUserNum():
 
 def getRandomNum():
     number = random.randint(0, 10000)
-    print(number)
     return number
 
 if __name__ == "__main__":
