@@ -7,6 +7,7 @@ Goal: Write a password generator. Passwords should be random.
 
 Jess Johnson, 08/09/2019
 """
+
 import random
 import string
 
