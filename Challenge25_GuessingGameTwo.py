@@ -7,26 +7,9 @@ Goal: User has a number between 0, 100 in mind, program guesses number.  User sa
 Program prints out how many guesses to get the number.  
 
 Note: Binary search will obviously be the optimal way to search.... to stealing that from exercise. 20
-Jess Johnson, 08/12/2019
+Jess Johnson, 08/13/2019
 """
 import math
-
-
-def binarySearch(number, input_list):
-    L = 0
-    R = len(input_list)-1
-    while L <= R:
-        #print('L' + str(L))
-        #print('R' + str(R))
-        m = math.floor((L+R)/2)
-        #print('m' + str(m) + '\n')
-        if input_list[m] < number:
-            L = m+1
-        elif input_list[m] > number:
-            R = m-1
-        else:
-            return m
-    return False
 
 def generateGuess(guesses, high_low):
     if high_low == 'h':
