@@ -1,14 +1,27 @@
 # -*- coding: utf-8 -*-
 """
-Challenge 26: Check Tic Tac Toe
+Challenge 27: Tic Tac Toe Draw
 For prompt, visit: https://www.practicepython.org/exercise/2015/11/16/26-check-tic-tac-toe.html
 
 Goal: Check if someone has won a game of tic tac toe.
 
 Jess Johnson, 08/13/2019
 """
-
 import random
+   
+def initializeGame():
+    game = [[0, 0, 0], 
+            [0, 0, 0],
+            [0, 0, 0]]
+    return game
+
+
+def nextMove(player, game):
+    print('Player ' + str(player) +'\'s turn. Please input row, col values for where you would like to play then press return.')
+    inputs = [int(x) for x in input().split(', ')]
+    game[inputs[0]][inputs[1]] = player
+    return game
+
 
 def checkForWin(board):
     #check rows
@@ -31,39 +44,20 @@ def checkForWin(board):
 
     if winner == 0 or winner == 'none':
         print('There is no winner')
-        winner = 0
+        winner = 'none'
     else: 
         print('Winner is: ' + str(winner))
 
     return winner
-    
+
+
 if __name__ == "__main__":
-    game = [[1, 2, 0], 
-            [2, 1, 0],
-            [2, 1, 1]]
-    winner = checkForWin(game)
-
-    winner_is_2 = [[2, 2, 0],
-    	[2, 1, 0],
-    	[2, 1, 1]]
-    winner = checkForWin(winner_is_2)
-
-    winner_is_1 = [[1, 2, 0],
-    	[2, 1, 0],
-    	[2, 1, 1]]
-    winner = checkForWin(winner_is_1)
-
-    winner_is_also_1 = [[0, 1, 0],
-    	[2, 1, 0],
-    	[2, 1, 1]]
-    winner = checkForWin(winner_is_also_1)
-
-    no_winner = [[1, 2, 0],
-    	[2, 1, 0],
-    	[2, 1, 2]]
-    winner = checkForWin(no_winner)
+    winner = 'none'
+    #choose random first player
+    player = random.randint(1,3)
+    game = initializeGame()
     
-    also_no_winner = [[1, 2, 0],
-    	[2, 1, 0],
-    	[2, 1, 0]]
-    winner = checkForWin(also_no_winner)
+    while winner == 'none':
+        player = ((player+2)%2)+1 #next player
+        game = nextMove(player, game) #get next move from player and put onto board
+        winner = checkForWin(game) #check for a win.
