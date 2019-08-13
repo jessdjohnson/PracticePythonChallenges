@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Challenge 24: Draw a game board
-For prompt, visit: hthttps://www.practicepython.org/exercise/2014/12/27/24-draw-a-game-board.html
+For prompt, visit: https://www.practicepython.org/exercise/2014/12/27/24-draw-a-game-board.html
 
 Goal: Draw the following:
      --- --- --- 
