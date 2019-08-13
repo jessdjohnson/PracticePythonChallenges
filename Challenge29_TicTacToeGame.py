@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-Challenge 27: Tic Tac Toe Draw
-For prompt, visit: https://www.practicepython.org/exercise/2015/11/16/26-check-tic-tac-toe.html
+Challenge 29: Tic Tac Toe Game
+For prompt, visit: https://www.practicepython.org/exercise/2016/08/03/29-tic-tac-toe-game.html
 
 Goal: Check if someone has won a game of tic tac toe.
 
@@ -61,6 +61,33 @@ def checkForWin(board):
 
     return winner
 
+def printGameboard(game):
+    horizontal_size = 3
+    
+    base_h = ' ---'
+    base_v = '|   '    
+    horizontal_line = base_h*horizontal_size + ' '
+    lines = []
+    for i in range(0,3):
+        lines.append(horizontal_line) 
+        this_line = ''
+        for j in range(0,3):
+            if game[i][j] == 0:
+                next_space = base_v
+            elif game[i][j] == 1:
+                next_space = '| X '
+            elif game[i][j] == 2:
+                next_space = '| O '
+            else:
+                print('Error')
+            this_line = this_line + next_space
+        lines.append(this_line)
+    lines.append(horizontal_line)
+    
+    print('Current Board: ')
+    for i in lines:
+        print(i)
+        
 
 if __name__ == "__main__":
     winner = 'none'
@@ -72,3 +99,4 @@ if __name__ == "__main__":
         player = ((player+2)%2)+1 #next player
         game = nextMove(player, game) #get next move from player and put onto board
         winner = checkForWin(game) #check for a win.
+        printGameboard(game)      
