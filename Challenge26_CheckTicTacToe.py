@@ -8,8 +8,6 @@ Goal: Check if someone has won a game of tic tac toe.
 Jess Johnson, 08/13/2019
 """
 
-import random
-
 def checkForWin(board):
     #check rows
     winner = 'none'
