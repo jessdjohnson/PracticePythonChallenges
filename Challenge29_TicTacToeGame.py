@@ -16,21 +16,21 @@ def initializeGame():
     return game
 
 
-def nextMove(player, game):
-    print('Player ' + str(player) +'\'s turn. Please input row, col values for where you would like to play then press return.')
-    inputs = [int(x) for x in input().split(', ')]
-    counter = 0
-    while (game[inputs[0]][inputs[1]] != 0) and (counter < 50):
-        print('The selected space is already occupied.  Please pick again')
+def nextMove(player, game, moves):
+    if moves != 9:        
         print('Player ' + str(player) +'\'s turn. Please input row, col values for where you would like to play then press return.')
         inputs = [int(x) for x in input().split(', ')]
-        counter += 1
-        
-    if counter != 49:
-        game[inputs[0]][inputs[1]] = player
-    else:
-        print('Player ' + str(player) + ' forfeited their turn by repeatedly selecting taken spaces.')
-
+        counter = 0
+        while (game[inputs[0]][inputs[1]] != 0) and (counter < 50):
+            print('The selected space is already occupied.  Please pick again')
+            print('Player ' + str(player) +'\'s turn. Please input row, col values for where you would like to play then press return.')
+            inputs = [int(x) for x in input().split(', ')]
+            counter += 1
+            
+        if counter != 49:
+            game[inputs[0]][inputs[1]] = player
+        else:
+            print('Player ' + str(player) + ' forfeited their turn by repeatedly selecting taken spaces.')
     return game
 
 
@@ -94,9 +94,15 @@ if __name__ == "__main__":
     #choose random first player
     player = random.randint(1,3)
     game = initializeGame()
-    
-    while winner == 'none':
-        player = ((player+2)%2)+1 #next player
-        game = nextMove(player, game) #get next move from player and put onto board
-        winner = checkForWin(game) #check for a win.
-        printGameboard(game)      
+    moves = 0
+    while (winner == 'none'):
+        if (moves < 10):
+            player = ((player+2)%2)+1 #next player
+            moves += 1
+            game = nextMove(player, game, moves) #get next move from player and put onto board
+            winner = checkForWin(game) #check for a win.
+            printGameboard(game) 
+        else:
+            winner = 'no winner'
+            print('The game is a stalemate!')
+        
