@@ -33,7 +33,7 @@ def guessLetter(letter, word, blank):
     print(blank)
     return blank, add_a_guess
 
-def getLetter(already_guessed):
+def getLetter(already_guessed, blank): 
     letter = ''
     while (letter == ''):
         print('Guess a letter and press return.')
@@ -41,7 +41,8 @@ def getLetter(already_guessed):
         print(already_guessed)
         letter = input()
         char = [char for char in already_guessed if (char == letter)]
-        if char != []:
+        char2 = [temp for temp in blank if (temp == letter)]
+        if (char != []) or (char2 != []):
             letter = ''
             print("You've already guessed that letter, try again.")
     return letter
@@ -69,11 +70,13 @@ if __name__ == "__main__":
     num_guesses = 0
     while blank != word:
         if num_guesses < 6:
-            letter = getLetter(already_guessed)
+            letter = getLetter(already_guessed, blank)
             blank, add_a_guess = guessLetter(letter, word, blank)
             num_guesses += add_a_guess
             print('You have ' + str(6 - num_guesses) + ' remaining.')
-            already_guessed.append(letter)
+            if add_a_guess:
+                already_guessed.append(letter)
+                
             if (blank == word):
                 print('You found the word. Great job!')
         else:
