@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 """
 Challenge 33: Birthday Dictionaries
 For prompt, visit: https://www.practicepython.org/exercise/2017/01/24/33-birthday-dictionaries.html
@@ -7,7 +8,6 @@ Goal: Part 1 of 4. Create a dictionary of names and birthdays.
 
 Jess Johnson, 08/14/2019
 """
-
 def getBirthday(name):
     if name in dictionary:
         birthday = dictionary[name]
