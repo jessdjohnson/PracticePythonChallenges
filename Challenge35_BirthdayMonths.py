@@ -1,13 +1,23 @@
 # -*- coding: utf-8 -*-
 """
-Challenge 34: Birthday JSON
-For prompt, visit: https://www.practicepython.org/exercise/2017/02/06/34-birthday-json.html
+Challenge 35: Birthday Months
+For prompt, visit: https://www.practicepython.org/exercise/2017/02/28/35-birthday-months.html
 
-Goal: Part 2 of 4. Load birthday dictionary from JSON
+Goal: Part 3 of 4. Load birthday dictionary from JSON.  Extract months of birthdays. And count numbers per month.
 
 Jess Johnson, 08/14/2019
 """
 import json
+from collections import Counter
+
+def extractMonthCounts(dictionary):
+    months_list = []
+    for i in dictionary:
+        temp = dictionary[i]
+        months_list.append(temp[0:2])
+    counts = Counter(months_list)
+    
+    return counts
 
 def loadDictionaryFromJSON(filename):
     with open(filename, "r") as f:
@@ -28,15 +38,12 @@ def writeDictionaryToJSON(dictionary):
         json.dump(dictionary, f)
     print('Wrote birthdays into: ' + filename)
     return filename
+
 if __name__ == "__main__":
-    dictionary = getDictionary()
-    json_file = writeDictionaryToJSON(dictionary)
-    print('Original Dictionary:')
-    print(dictionary)
-    
-    print('\nCool beans.  Now let\'s reload that.')
+    json_file = "birthdays_Challenge34.json"
     dictionary2 = loadDictionaryFromJSON(json_file)
     print('Dictionary from JSON:')
     print(dictionary2)
     
-    print('Hey, they look the same.  Amazing!')
+    month_counts = extractMonthCounts(dictionary2)
+    print(month_counts)
