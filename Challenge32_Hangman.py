@@ -57,6 +57,49 @@ def getWordFromFile():
     word = linecache.getline(filename, random_line_num).rstrip('\n')
     return word
 
+def addBodyPart(part, lines):
+    
+    if part == 'head':
+        lines[2] = '    |     O'
+    elif part == 'left_arm':
+        lines[3] = '    |    ['
+    elif part == 'body':
+        lines[3] = '    |    [|'
+    elif part == 'right_arm':
+        lines[3] = '    |    [|]'
+    elif part == 'left_leg':
+        lines[4] = '    |    ⅃'
+    elif part == 'right_leg':
+        lines[4] = '    |    ⅃ L'
+        lines.append("You've unfortunately been hanged.")
+    else:
+        print("please input a valid body  part")
+    
+    return lines
+
+def createHangmanPlatform():
+
+    lines = []
+    lines.append('    _______    ')    
+    lines.append('    |     |   ')
+    lines.append('    |')
+    lines.append('    |')
+    lines.append('    |')
+    lines.append('    |         ')
+    lines.append('____|_________')
+    return lines
+    
+def printPic(lines):
+    for line in lines:
+        print(line)
+        
+if __name__ == "__main__":
+    
+    for part in body_parts:
+        lines = addBodyPart(part, lines)
+        printPic(lines)
+        print('\n')
+        
 
 if __name__ == "__main__":
     print('Welcome to Hangman!')
@@ -68,6 +111,9 @@ if __name__ == "__main__":
     print(blank)
     already_guessed = []
     num_guesses = 0
+    lines = createHangmanPlatform()
+    body_parts = ['head','left_arm','body','right_arm','left_leg','right_leg']
+
     while blank != word:
         if num_guesses < 6:
             letter = getLetter(already_guessed, blank)
@@ -76,6 +122,9 @@ if __name__ == "__main__":
             print('You have ' + str(6 - num_guesses) + ' remaining.')
             if add_a_guess:
                 already_guessed.append(letter)
+                lines = addBodyPart(body_parts[num_guesses-1], lines)
+                printPic(lines)
+                print('\n')
                 
             if (blank == word):
                 print('You found the word. Great job!')
